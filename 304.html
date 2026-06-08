@@ -1,22 +1,212 @@
-<!-- 304.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>304 Not Modified</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f5;
+      overflow: hidden;
+      background: linear-gradient(135deg, #101010 0%, #181818 52%, #0d0d0d 100%);
+    }
+
+    .status-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 48px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .status-page::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.11), transparent 32%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.06), transparent 30%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .card {
+      width: min(920px, 100%);
+      min-height: 540px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 23px,
+          rgba(255,255,255,0.035) 24px
+        );
+      backdrop-filter: blur(24px);
+      border-radius: 28px;
+      padding: 44px;
+      position: relative;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.45);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .label {
+      position: absolute;
+      top: 32px;
+      right: 36px;
+      color: rgba(255,255,255,0.42);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .code {
+      font-size: clamp(72px, 14vw, 156px);
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      font-weight: 850;
+    }
+
+    .title {
+      margin-top: 24px;
+      font-size: clamp(28px, 5vw, 56px);
+      letter-spacing: -0.05em;
+      font-weight: 750;
+    }
+
+    .copy {
+      margin-top: 16px;
+      max-width: 560px;
+      color: rgba(255,255,255,0.68);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .clock {
+      position: absolute;
+      right: 90px;
+      top: 128px;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+    }
+
+    .clock::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      background: rgba(255,255,255,0.5);
+      left: 59px;
+      top: 24px;
+      transform-origin: bottom;
+      transform: rotate(35deg);
+    }
+
+    .clock::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 32px;
+      background: rgba(255,255,255,0.32);
+      left: 59px;
+      top: 32px;
+      transform-origin: bottom;
+      transform: rotate(110deg);
+    }
+
+    .stamp {
+      position: absolute;
+      right: 46px;
+      bottom: 54px;
+      border: 2px solid rgba(255,255,255,0.26);
+      color: rgba(255,255,255,0.45);
+      padding: 18px 24px;
+      border-radius: 8px;
+      transform: rotate(-8deg);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .ghost-lines {
+      margin-top: 48px;
+      display: grid;
+      gap: 14px;
+      max-width: 520px;
+      opacity: 0.34;
+    }
+
+    .ghost-lines div {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+    }
+
+    .ghost-lines div:nth-child(1) {
+      width: 88%;
+    }
+
+    .ghost-lines div:nth-child(2) {
+      width: 72%;
+    }
+
+    .ghost-lines div:nth-child(3) {
+      width: 54%;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        overflow: auto;
+      }
+
+      .card {
+        padding: 32px;
+        min-height: 560px;
+      }
+
+      .label {
+        position: static;
+        margin-bottom: 36px;
+      }
+
+      .clock {
+        opacity: 0.35;
+      }
+    }
+  </style>
 </head>
-<body class="not-modified">
+
+<body>
   <main class="status-page">
     <section class="card">
       <div class="label">HTTP STATUS</div>
+
       <div class="code">304</div>
       <h1 class="title">Not Modified</h1>
+
       <p class="copy">
         Nothing new is sent because nothing new exists.
         Time moves forward, but the saved version remains enough.
       </p>
+
+      <div class="ghost-lines">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
 
       <div class="clock"></div>
       <div class="stamp">UNCHANGED</div>
@@ -24,294 +214,3 @@
   </main>
 </body>
 </html>
-
-/* style.css */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #f5f5f5;
-  overflow: hidden;
-}
-
-.status-page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 48px 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.status-page::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at 25% 20%, rgba(122, 162, 255, 0.22), transparent 32%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08), transparent 30%);
-  filter: blur(20px);
-  pointer-events: none;
-}
-
-.card {
-  width: min(920px, 100%);
-  min-height: 540px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.055);
-  backdrop-filter: blur(24px);
-  border-radius: 28px;
-  padding: 44px;
-  position: relative;
-  box-shadow: 0 30px 100px rgba(0,0,0,0.45);
-  overflow: hidden;
-  z-index: 1;
-}
-
-.code {
-  font-size: clamp(72px, 14vw, 156px);
-  line-height: 0.85;
-  letter-spacing: -0.08em;
-  font-weight: 850;
-}
-
-.title {
-  margin-top: 24px;
-  font-size: clamp(28px, 5vw, 56px);
-  letter-spacing: -0.05em;
-  font-weight: 750;
-}
-
-.copy {
-  margin-top: 16px;
-  max-width: 560px;
-  color: rgba(255,255,255,0.68);
-  font-size: 18px;
-  line-height: 1.75;
-}
-
-.label {
-  position: absolute;
-  top: 32px;
-  right: 36px;
-  color: rgba(255,255,255,0.42);
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-/* 103 Early Hints */
-body.early {
-  background:
-    linear-gradient(135deg, #050711 0%, #10162f 48%, #061c22 100%);
-}
-
-.early .hint {
-  position: absolute;
-  border: 1px solid rgba(152, 206, 255, 0.28);
-  background: rgba(152, 206, 255, 0.075);
-  border-radius: 16px;
-  animation: pulse 2.4s infinite ease-in-out;
-}
-
-.early .hint:nth-of-type(1) {
-  width: 220px;
-  height: 70px;
-  right: 90px;
-  bottom: 160px;
-}
-
-.early .hint:nth-of-type(2) {
-  width: 150px;
-  height: 150px;
-  right: 270px;
-  bottom: 82px;
-  animation-delay: 0.35s;
-}
-
-.early .hint:nth-of-type(3) {
-  width: 320px;
-  height: 20px;
-  left: 46px;
-  bottom: 72px;
-  animation-delay: 0.7s;
-}
-
-.trail {
-  position: absolute;
-  right: 90px;
-  top: 140px;
-  width: 360px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(144, 217, 255, 0.8), transparent);
-  transform: rotate(-22deg);
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.35;
-    transform: translateY(0);
-  }
-
-  50% {
-    opacity: 0.95;
-    transform: translateY(-8px);
-  }
-}
-
-/* 304 Not Modified */
-body.not-modified {
-  background:
-    linear-gradient(135deg, #101010 0%, #181818 52%, #0d0d0d 100%);
-}
-
-.not-modified .card {
-  background:
-    linear-gradient(rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 23px,
-      rgba(255,255,255,0.035) 24px
-    );
-}
-
-.stamp {
-  position: absolute;
-  right: 46px;
-  bottom: 54px;
-  border: 2px solid rgba(255,255,255,0.26);
-  color: rgba(255,255,255,0.45);
-  padding: 18px 24px;
-  border-radius: 8px;
-  transform: rotate(-8deg);
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-}
-
-.clock {
-  position: absolute;
-  right: 90px;
-  top: 128px;
-  width: 120px;
-  height: 120px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 50%;
-}
-
-.clock::before {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 40px;
-  background: rgba(255,255,255,0.5);
-  left: 59px;
-  top: 24px;
-  transform-origin: bottom;
-  transform: rotate(35deg);
-}
-
-.clock::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 32px;
-  background: rgba(255,255,255,0.32);
-  left: 59px;
-  top: 32px;
-  transform-origin: bottom;
-  transform: rotate(110deg);
-}
-
-/* 451 Legal */
-body.legal {
-  background:
-    linear-gradient(135deg, #120607 0%, #1d0b0d 48%, #050505 100%);
-}
-
-.legal .card {
-  border-color: rgba(255, 70, 70, 0.2);
-  background: rgba(40, 8, 10, 0.58);
-}
-
-.redacted {
-  margin-top: 44px;
-  display: grid;
-  gap: 14px;
-  max-width: 620px;
-}
-
-.bar {
-  height: 24px;
-  background: #050505;
-  border-radius: 3px;
-  box-shadow: 0 0 24px rgba(255, 0, 0, 0.08);
-}
-
-.bar:nth-child(1) {
-  width: 92%;
-}
-
-.bar:nth-child(2) {
-  width: 64%;
-}
-
-.bar:nth-child(3) {
-  width: 78%;
-}
-
-.bar:nth-child(4) {
-  width: 48%;
-}
-
-.seal {
-  position: absolute;
-  right: 48px;
-  bottom: 42px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,80,80,0.32);
-  display: grid;
-  place-items: center;
-  color: rgba(255,100,100,0.55);
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  transform: rotate(14deg);
-}
-
-.seal::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,80,80,0.22);
-}
-
-@media (max-width: 720px) {
-  body {
-    overflow: auto;
-  }
-
-  .card {
-    padding: 32px;
-    min-height: 560px;
-  }
-
-  .label {
-    position: static;
-    margin-bottom: 36px;
-  }
-
-  .clock,
-  .seal,
-  .trail {
-    opacity: 0.35;
-  }
-}
