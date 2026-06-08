@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>304 Not Modified</title>
 
   <style>
@@ -93,6 +93,32 @@
       line-height: 1.75;
     }
 
+    .ghost-lines {
+      margin-top: 48px;
+      display: grid;
+      gap: 14px;
+      max-width: 520px;
+      opacity: 0.34;
+    }
+
+    .ghost-lines div {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+    }
+
+    .ghost-lines div:nth-child(1) {
+      width: 88%;
+    }
+
+    .ghost-lines div:nth-child(2) {
+      width: 72%;
+    }
+
+    .ghost-lines div:nth-child(3) {
+      width: 54%;
+    }
+
     .clock {
       position: absolute;
       right: 90px;
@@ -139,32 +165,6 @@
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0.16em;
-    }
-
-    .ghost-lines {
-      margin-top: 48px;
-      display: grid;
-      gap: 14px;
-      max-width: 520px;
-      opacity: 0.34;
-    }
-
-    .ghost-lines div {
-      height: 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.34);
-    }
-
-    .ghost-lines div:nth-child(1) {
-      width: 88%;
-    }
-
-    .ghost-lines div:nth-child(2) {
-      width: 72%;
-    }
-
-    .ghost-lines div:nth-child(3) {
-      width: 54%;
     }
 
     @media (max-width: 720px) {
